@@ -6,7 +6,7 @@ OBJ_DIR=../obj
 
 CFLAGS=-c -Wall -I$(INCLUDE_DIR)
 
-SOURCES=uart.c
+SOURCES=$(wildcard *.c)
 OBJECTS=$(SOURCES:.c=.o)
 DEPS=$(addprefix $(OBJ_DIR)/, $(OBJECTS))
 
