@@ -8,16 +8,17 @@ CFLAGS=-c -Wall -I$(INCLUDE_DIR)
 
 SOURCES=uart.c
 OBJECTS=$(SOURCES:.c=.o)
+DEPS=$(addprefix $(OBJ_DIR)/, $(OBJECTS))
 
-all: $(OBJECTS)
+all: $(DEPS)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: %.c
 	@echo "Compilando o arquivo-fonte: " $<
-	$(CC) $(CFLAGS) $< -o $(OBJ_DIR)/$@
+	@$(CC) $(CFLAGS) $< -o $@
 
 .PHONY: clean
 
 clean:
 	@echo -e "\nLimpando os objetos."
-	rm -rf $(addprefix $(OBJ_DIR)/, $(OBJECTS))
+	@rm -rf $(DEPS)
 	@echo -e "Limpeza finalizada.\n"
