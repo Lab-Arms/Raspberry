@@ -5,7 +5,6 @@ BIN_DIR=../bin
 OBJ_DIR=../obj
 
 CFLAGS=-c -Wall -I$(INCLUDE_DIR)
-LDFLAGS=
 
 SOURCES=uart.c
 OBJECTS=$(SOURCES:.c=.o)
@@ -19,4 +18,6 @@ all: $(OBJECTS)
 .PHONY: clean
 
 clean:
-	@rm -rf $(EXECUTABLE) $(OBJECTS)
+	@echo -e "\nLimpando os objetos."
+	rm -rf $(addprefix $(OBJ_DIR)/, $(OBJECTS))
+	@echo -e "Limpeza finalizada.\n"

@@ -1,5 +1,3 @@
-modelo.c
-main.c
 *.swp
-main.elf
-uart.o
+*.o
+*.elf
