@@ -1,5 +1,5 @@
-#ifndef _UART_H
-#define _UART_H
+#ifndef _RASP_UART_H
+#define _RASP_UART_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,14 +21,16 @@
 #endif
 
 struct uart_data {
+	char* data;
 	size_t length;
-	char *data;
 };
 
-int uart0_filestream = -1;
-struct termios oldtio, newtio;
+extern int uart0_filestream;
+extern struct termios oldtio, newtio;
 
 extern int uart_init (const char*);
-extern int uart_end ();
+extern int uart_send (struct uart_data*);
+extern int uart_recv ();
+extern void uart_end ();
 
 #endif
