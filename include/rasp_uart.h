@@ -30,7 +30,7 @@ extern struct termios oldtio, newtio;
 
 extern int uart_init (const char*);
 extern int uart_send (struct uart_data*);
-extern int uart_recv ();
+extern int uart_recv (struct uart_data*);
 extern void uart_end ();
 
 #endif

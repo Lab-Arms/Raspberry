@@ -9,19 +9,19 @@ int uart_init (const char* device)
 
 	if ((uart0_filestream = open (device, O_RDWR | O_NOCTTY)) < 0)
 	{
-		perror (strerror(errno));
+		perror ("uart_init");
 		return errno;
 	}
 
 	if (fstat (uart0_filestream, &dev_status) < 0)
 	{
-		perror (strerror(errno));
+		perror ("uart_init");
 		return errno;
 	}
 
 	if ((dev_status.st_mode & 0444) != 0444)
 	{
-		fprintf (stderr, "O dispositivo %s não possui as permissões necessárias.\n", device);
+		fprintf (stderr, "uart_init: O dispositivo %s não possui as permissões necessárias.\n", device);
 		fprintf (stderr, "Permissões: %lo.\n", (unsigned long) dev_status.st_mode & 0777);
 
 		close (uart0_filestream);
